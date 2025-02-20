@@ -1,8 +1,10 @@
 package com.companyEmployeeApp.kalidCompanyEmployeeApp.services;
 
 
+import com.companyEmployeeApp.kalidCompanyEmployeeApp.entities.Company;
 import com.companyEmployeeApp.kalidCompanyEmployeeApp.entities.Employee;
 import com.companyEmployeeApp.kalidCompanyEmployeeApp.exception.EmployeeNotFoundException;
+import com.companyEmployeeApp.kalidCompanyEmployeeApp.repositories.CompanyRepository;
 import com.companyEmployeeApp.kalidCompanyEmployeeApp.repositories.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

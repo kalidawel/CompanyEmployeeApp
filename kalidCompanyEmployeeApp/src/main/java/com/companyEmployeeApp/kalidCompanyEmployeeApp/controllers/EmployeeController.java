@@ -2,6 +2,7 @@ package com.companyEmployeeApp.kalidCompanyEmployeeApp.controllers;
 
 import com.companyEmployeeApp.kalidCompanyEmployeeApp.entities.Employee;
 import com.companyEmployeeApp.kalidCompanyEmployeeApp.services.EmployeeService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,8 +18,8 @@ public class EmployeeController {
 private EmployeeService employeeService;
 
     @GetMapping("/home")
-    public String home(){
-        return "Well Come To Company_Employee api";
+    public String home(HttpServletRequest request){
+        return "Well Come To Company_Employee api" +request.getSession().getId();
     }
 
 
