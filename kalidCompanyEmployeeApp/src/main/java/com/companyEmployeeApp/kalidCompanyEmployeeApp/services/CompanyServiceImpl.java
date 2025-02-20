@@ -32,6 +32,13 @@ private CompanyRepository companyRepository;
 
     @Override
     public Company createCompany(Company company) {
+         if (company == null) {
+            throw new CompanyNotFoundException("Company cannot be null");
+        }
+
+        if (company.getCompanyName() == null || company.getCompanyName().isEmpty()) {
+            throw new CompanyNotFoundException("Company name cannot be empty");
+        }
         return companyRepository.save(company);
     }
 

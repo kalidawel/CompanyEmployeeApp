@@ -40,7 +40,6 @@ public class EmployeeServiceImpl implements EmployeeService {
           if (employee == null) {
                     throw new EmployeeNotFoundException("Employee data cannot be null.");
                 }
-                   //checking the company
                 Company company = employee.getCompany();
                 if (company != null) {
                     Company companyToBeSet = companyRepository.findById(company.getCompanyId())
@@ -51,9 +50,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
                     employee.setCompany(companyToBeSet);
                 }
-
                 return employeeRepository.save(employee);
-
 
     }
 
