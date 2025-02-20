@@ -26,7 +26,8 @@ private CompanyRepository companyRepository;
     if(optionalCompany.isEmpty()){
         throw new CompanyNotFoundException("Company with the id: "+id+"not exist");
     }
-   return optionalCompany.get();
+
+     return optionalCompany.get();
     }
 
     @Override
