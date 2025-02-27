@@ -1,5 +1,6 @@
 package com.companyEmployeeApp.kalidCompanyEmployeeApp.services;
 
+import com.companyEmployeeApp.kalidCompanyEmployeeApp.dto.CompanyDto;
 import com.companyEmployeeApp.kalidCompanyEmployeeApp.entities.Company;
 import com.companyEmployeeApp.kalidCompanyEmployeeApp.exception.CompanyNotFoundException;
 import com.companyEmployeeApp.kalidCompanyEmployeeApp.repositories.CompanyRepository;
@@ -43,7 +44,7 @@ private CompanyRepository companyRepository;
     }
 
     @Override
-    public Company updateCompany(Company company, long id) {
+    public Company updateCompany(CompanyDto companyDto, long id) {
 
         Optional<Company> optionalCompany= companyRepository.findById(id);
         if (optionalCompany.isEmpty()){
@@ -52,9 +53,9 @@ private CompanyRepository companyRepository;
         }
 
         Company toBeUpdatedCompany=optionalCompany.get();
-        toBeUpdatedCompany.setCompanyName(company.getCompanyName());
-        toBeUpdatedCompany.setCompanyEmail(company.getCompanyEmail());
-        toBeUpdatedCompany.setCompanyType(company.getCompanyType());
+        toBeUpdatedCompany.setCompanyName(companyDto.getCompanyName());
+        toBeUpdatedCompany.setCompanyEmail(companyDto.getCompanyEmail());
+        toBeUpdatedCompany.setCompanyType(companyDto.getCompanyType());
        Company updatedCompany= companyRepository.save(toBeUpdatedCompany);
        return updatedCompany;
     }

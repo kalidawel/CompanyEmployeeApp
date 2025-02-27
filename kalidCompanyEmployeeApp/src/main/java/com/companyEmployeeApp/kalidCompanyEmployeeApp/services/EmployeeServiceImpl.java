@@ -1,6 +1,7 @@
 package com.companyEmployeeApp.kalidCompanyEmployeeApp.services;
 
 
+import com.companyEmployeeApp.kalidCompanyEmployeeApp.dto.EmployeeDto;
 import com.companyEmployeeApp.kalidCompanyEmployeeApp.entities.Company;
 import com.companyEmployeeApp.kalidCompanyEmployeeApp.entities.Employee;
 import com.companyEmployeeApp.kalidCompanyEmployeeApp.exception.EmployeeNotFoundException;
@@ -55,16 +56,16 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Employee updateEmployee(Employee employee, Long id) {
+    public Employee updateEmployee(EmployeeDto employeeDto, Long id) {
 
-                if (employee == null) {
+                if (employeeDto == null) {
                     throw new EmployeeNotFoundException("Employee data cannot be null.");
                 }
 
                 Employee toBeUpdatedEmployee = employeeRepository.findById(id)
                         .orElseThrow(() -> new EmployeeNotFoundException("Employee with ID: " + id + " does not exist"));
 
-                Company company = employee.getCompany();
+                Company company = employeeDto.getCompany();
                 if (company != null) {
                     Company existingCompany = companyRepository.findById(company.getCompanyId())
                             .orElseGet(() -> {
@@ -76,12 +77,12 @@ public class EmployeeServiceImpl implements EmployeeService {
                 }
 
 
-                 toBeUpdatedEmployee.setfName(employee.getfName());
-                 toBeUpdatedEmployee.setlName(employee.getlName());
-                 toBeUpdatedEmployee.setEmpDepartment(employee.getEmpDepartment());
-                 toBeUpdatedEmployee.setAge(employee.getAge());
-                 toBeUpdatedEmployee.setEmail(employee.getEmail());
-                 toBeUpdatedEmployee.setAddress(employee.getAddress());
+                 toBeUpdatedEmployee.setfName(employeeDto.getfName());
+                 toBeUpdatedEmployee.setlName(employeeDto.getlName());
+                 toBeUpdatedEmployee.setEmpDepartment(employeeDto.getEmpDepartment());
+                 toBeUpdatedEmployee.setAge(employeeDto.getAge());
+                 toBeUpdatedEmployee.setEmail(employeeDto.getEmail());
+                 toBeUpdatedEmployee.setAddress(employeeDto.getAddress());
 
                 return employeeRepository.save(toBeUpdatedEmployee);
 

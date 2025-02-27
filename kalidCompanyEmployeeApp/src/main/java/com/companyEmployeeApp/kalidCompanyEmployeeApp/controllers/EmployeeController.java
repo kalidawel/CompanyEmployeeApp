@@ -1,5 +1,6 @@
 package com.companyEmployeeApp.kalidCompanyEmployeeApp.controllers;
 
+import com.companyEmployeeApp.kalidCompanyEmployeeApp.dto.EmployeeDto;
 import com.companyEmployeeApp.kalidCompanyEmployeeApp.entities.Employee;
 import com.companyEmployeeApp.kalidCompanyEmployeeApp.services.EmployeeService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -43,8 +44,8 @@ private EmployeeService employeeService;
 
 
         @PutMapping("/update/{id}")
-        public ResponseEntity<Employee> updateEmployee(@RequestBody Employee employee, @PathVariable long id) {
-            return new ResponseEntity<>(employeeService.updateEmployee(employee,id), HttpStatus.OK);
+        public ResponseEntity<Employee> updateEmployee(@RequestBody EmployeeDto employeeDto, @PathVariable long id) {
+            return new ResponseEntity<>(employeeService.updateEmployee(employeeDto,id), HttpStatus.OK);
         }
 
         @DeleteMapping("/delete/{id}")

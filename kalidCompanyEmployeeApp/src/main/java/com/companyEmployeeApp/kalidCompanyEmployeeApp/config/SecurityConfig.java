@@ -16,6 +16,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 
 import java.util.List;
@@ -54,6 +56,19 @@ public class SecurityConfig {
 
 
     }
+
+    @Bean
+    public UrlBasedCorsConfigurationSource corFilter() {
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowCredentials(false);
+        configuration.setAllowedOrigins(List.of("http://localhost:5173", "http://127.0.0.1:5173"));
+        configuration.addAllowedHeader("*");
+        configuration.addAllowedMethod("*");
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
+    }
+
 
 
 

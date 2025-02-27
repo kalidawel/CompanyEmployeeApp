@@ -1,16 +1,22 @@
 package com.companyEmployeeApp.kalidCompanyEmployeeApp.dto;
 
 
+import com.companyEmployeeApp.kalidCompanyEmployeeApp.entities.Employee;
+
+import java.util.List;
 
 public class CompanyDto {
     private String companyName;
     private String companyEmail;
     private String companyType;
+    private List<EmployeeDto> employeesDto;
 
-    public CompanyDto(String companyName, String companyEmail, String companyType) {
+    public CompanyDto(String companyName, String companyEmail,
+                      String companyType, List<EmployeeDto> employeesDto) {
         this.companyName = companyName;
         this.companyEmail = companyEmail;
         this.companyType = companyType;
+        this.employeesDto = employeesDto;
     }
 
     public String getCompanyName() {
@@ -37,12 +43,21 @@ public class CompanyDto {
         this.companyType = companyType;
     }
 
+    public List<EmployeeDto> getEmployeesDto() {
+        return employeesDto;
+    }
+
+    public void setEmployeesDto(List<EmployeeDto> employeesDto) {
+        this.employeesDto = employeesDto;
+    }
+
     @Override
     public String toString() {
         return "CompanyDto{" +
                 "companyName='" + companyName + '\'' +
                 ", companyEmail='" + companyEmail + '\'' +
                 ", companyType='" + companyType + '\'' +
+                ", employeesDto=" + employeesDto +
                 '}';
     }
 }

@@ -1,8 +1,11 @@
 package com.companyEmployeeApp.kalidCompanyEmployeeApp.controllers;
 
 
+import com.companyEmployeeApp.kalidCompanyEmployeeApp.dto.CompanyDto;
 import com.companyEmployeeApp.kalidCompanyEmployeeApp.entities.Company;
 import com.companyEmployeeApp.kalidCompanyEmployeeApp.services.CompanyService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +17,7 @@ import java.util.List;
 @RequestMapping("/api/company")
 public class CompanyController {
 
+    private static final Logger log = LoggerFactory.getLogger(CompanyController.class);
     @Autowired
     private CompanyService companyService;
 
@@ -44,8 +48,9 @@ public class CompanyController {
 
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<Company> updateCompany(@RequestBody Company company, @PathVariable long id) {
-        return new ResponseEntity<>(companyService.updateCompany(company,id), HttpStatus.OK);
+    public ResponseEntity<Company> updateCompany(@RequestBody CompanyDto companyDto, @PathVariable long id) {
+        log.info(companyDto.toString());
+        return new ResponseEntity<>(companyService.updateCompany(companyDto,id), HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")
